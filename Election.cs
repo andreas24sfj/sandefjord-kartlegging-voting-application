@@ -34,6 +34,12 @@ class Election
 
     return newVote;
   }
+
+  public Result GetCurrentResult()
+  {
+    Result result = new Result(castVote);
+    return result;
+  }
 }
 
 class Nominee
@@ -55,5 +61,27 @@ class Vote
   {
     CastFor = nominee;
     CastAt = DateTime.Now;
+  }
+}
+
+class Result
+{
+  public Dictionary<string, int> nomineesVoteCount { get; set; }
+
+  public Result(List<Vote> votes)
+  {
+    nomineesVoteCount = new Dictionary<string, int>();
+
+    foreach (var vote in votes)
+    {
+      if (!nomineesVoteCount.ContainsKey(vote.CastFor.Name))
+      {
+        nomineesVoteCount.Add(vote.CastFor.Name, 1);
+      }
+      else
+      {
+        nomineesVoteCount[vote.CastFor.Name] += 1;
+      }
+    }
   }
 }

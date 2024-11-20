@@ -26,4 +26,9 @@ app.MapPost("/election/vote", (VoteDTO vote) =>
   }
 });
 
+app.MapGet("/election", () =>
+{
+  return election.GetCurrentResult();
+});
+
 app.Run();
