@@ -12,4 +12,18 @@ app.MapGet("/election/nominee", () =>
   return election.ListNominees();
 });
 
+app.MapPost("/election/vote", (VoteDTO vote) =>
+{
+  Vote? voteReciept = election.CastVote(vote.Nominee);
+
+  if (voteReciept == null)
+  {
+    return Results.BadRequest();
+  }
+  else
+  {
+    return Results.Ok();
+  }
+});
+
 app.Run();

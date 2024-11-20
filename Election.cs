@@ -20,6 +20,20 @@ class Election
   {
     return nominees;
   }
+
+  public Vote? CastVote(string nomineeName)
+  {
+    Nominee? nominee = nominees.Find((nominee) => nominee.Name == nomineeName);
+    if (nominee == null)
+    {
+      return null;
+    }
+
+    Vote newVote = new Vote(nominee);
+    castVote.Add(newVote);
+
+    return newVote;
+  }
 }
 
 class Nominee
@@ -34,8 +48,8 @@ class Nominee
 
 class Vote
 {
-  public DateTime CastAt;
-  public Nominee CastFor;
+  public DateTime CastAt { get; set; }
+  public Nominee CastFor { get; set; }
 
   public Vote(Nominee nominee)
   {
