@@ -1,3 +1,7 @@
+List<string> nominatedNames = ["Lars", "Joakim"];
+Election election = new Election(nominatedNames);
+
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
