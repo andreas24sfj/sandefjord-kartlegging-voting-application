@@ -15,11 +15,16 @@ class Election
       nominees.Add(nominee);
     }
   }
+
+  public List<Nominee> ListNominees()
+  {
+    return nominees;
+  }
 }
 
 class Nominee
 {
-  public string Name;
+  public string Name { get; set; }
 
   public Nominee(string name)
   {
