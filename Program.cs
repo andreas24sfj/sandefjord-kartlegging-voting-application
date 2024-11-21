@@ -10,7 +10,7 @@ app.MapGet("/", () => "Hello World!");
 app.MapGet("/election/nominee", () =>
 {
   return election.ListNominees();
-});sdf
+});
 
 app.MapPost("/election/vote", (VoteDTO vote) =>
 {
